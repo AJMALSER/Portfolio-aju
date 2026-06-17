@@ -5,11 +5,9 @@ const links = document.querySelectorAll('.nav-links li a');
 
 hamburger.addEventListener('click', () => {
   navLinks.classList.toggle('active');
-  // Animate hamburger lines
   hamburger.classList.toggle('toggle');
 });
 
-// Close menu when a link is clicked
 links.forEach(link => {
   link.addEventListener('click', () => {
     navLinks.classList.remove('active');
@@ -19,9 +17,9 @@ links.forEach(link => {
 // 2. Typed.js for Hero Section
 new Typed("#typing", {
   strings: [
+    "Logistics & SCM Student",
+    "E-Commerce Entrepreneur",
     "Full-Stack Developer",
-    "E-Commerce Expert",
-    "UI/UX Enthusiast",
     "Problem Solver"
   ],
   typeSpeed: 60,
@@ -47,7 +45,7 @@ const scrollObserver = new IntersectionObserver((entries) => {
         { opacity: 0, y: 50 }, 
         { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }
       );
-      scrollObserver.unobserve(entry.target); // Animate only once
+      scrollObserver.unobserve(entry.target); 
     }
   });
 }, { threshold: 0.1 });
@@ -66,7 +64,7 @@ if (textElement) {
     span.className = 'word';
     
     // Highlight name dynamically
-    if(word.includes('Muhammad') || word.includes('Ajmal')) {
+    if(word.includes('Muhammed') || word.includes('Ajmal')) {
        span.classList.add('highlight');
     }
     
@@ -81,7 +79,7 @@ if (textElement) {
           opacity: 1,
           y: 0,
           duration: 0.6,
-          stagger: 0.02, // Fast, smooth stagger for mobile
+          stagger: 0.02, 
           ease: "power2.out"
         });
         textFadeObserver.unobserve(entry.target);
