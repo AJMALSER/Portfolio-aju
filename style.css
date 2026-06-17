@@ -15,7 +15,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  -webkit-tap-highlight-color: transparent; /* Removes tap highlight on mobile */
+  -webkit-tap-highlight-color: transparent;
 }
 
 html {
@@ -75,6 +75,7 @@ header {
   font-weight: 700;
   letter-spacing: 2px;
   color: #fff;
+  text-transform: uppercase;
 }
 
 .nav-links {
@@ -96,7 +97,6 @@ header {
   color: var(--accent);
 }
 
-/* Mobile Menu Hamburger */
 .hamburger {
   display: none;
   flex-direction: column;
@@ -129,7 +129,6 @@ section {
   -webkit-text-fill-color: transparent;
 }
 
-/* Glass Elements */
 .glass-panel, .glass-card {
   background: var(--glass-bg);
   backdrop-filter: blur(20px);
@@ -229,11 +228,50 @@ section {
   font-weight: 600;
 }
 
-/* Premium Word Fade Effect */
 .word {
   display: inline-block;
   opacity: 0;
   transform: translateY(10px);
+}
+
+/* --- Infinite Marquee --- */
+.marquee-container {
+  width: 100%;
+  overflow: hidden;
+  background: rgba(59, 130, 246, 0.05);
+  border-top: 1px solid var(--glass-border);
+  border-bottom: 1px solid var(--glass-border);
+  padding: 15px 0;
+  margin: 50px 0;
+  display: flex;
+  white-space: nowrap;
+}
+
+.marquee-content {
+  display: flex;
+  align-items: center;
+  animation: marquee 20s linear infinite;
+}
+
+.marquee-content span {
+  font-size: 2rem;
+  font-weight: 700;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
+  margin: 0 20px;
+  font-family: var(--font-main);
+  text-transform: uppercase;
+}
+
+.marquee-content .dot {
+  color: var(--accent);
+  -webkit-text-stroke: 0;
+  font-size: 1.5rem;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); } 
 }
 
 /* --- Skills Section --- */
@@ -295,6 +333,80 @@ section {
   text-decoration: none;
   font-weight: 600;
   font-size: 0.9rem;
+}
+
+/* --- Timeline Section --- */
+.timeline {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+.timeline::after {
+  content: '';
+  position: absolute;
+  width: 2px;
+  background: var(--glass-border);
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -1px;
+}
+
+.timeline-item {
+  padding: 10px 40px;
+  position: relative;
+  width: 50%;
+  margin-bottom: 30px;
+}
+
+.timeline-item.left { left: 0; }
+.timeline-item.right { left: 50%; }
+
+.timeline-dot {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: var(--bg-dark);
+  border: 3px solid var(--accent);
+  border-radius: 50%;
+  top: 20px;
+  right: -8px;
+  z-index: 1;
+  box-shadow: 0 0 10px var(--accent-glow);
+}
+
+.timeline-item.right .timeline-dot {
+  left: -8px;
+}
+
+.timeline-content {
+  padding: 25px;
+  text-align: left;
+}
+
+.timeline-date {
+  color: var(--accent);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.timeline-content h3 {
+  font-size: 1.3rem;
+  color: #fff;
+  margin-bottom: 5px;
+}
+
+.timeline-company {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 15px;
+  font-style: italic;
 }
 
 /* --- Contact Section --- */
@@ -363,8 +475,12 @@ footer {
   
   .hero h1 { font-size: 2.5rem; }
   .section-title { font-size: 2rem; }
-  
   .about-panel { padding: 30px 20px; }
-  
   section { padding-top: 80px; min-height: auto; margin-bottom: 40px;}
+
+  /* Timeline Mobile Fixes */
+  .timeline::after { left: 20px; }
+  .timeline-item { width: 100%; padding-left: 50px; padding-right: 0; }
+  .timeline-item.left, .timeline-item.right { left: 0; }
+  .timeline-item.left .timeline-dot, .timeline-item.right .timeline-dot { left: 12px; right: auto; }
 }
